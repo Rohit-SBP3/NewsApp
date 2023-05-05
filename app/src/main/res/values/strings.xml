@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="api_key">38b86216133540c1bfcf94c9a7d9ad49</string>
+    <string name="technology">technology</string>
+    <string name="sports">sports</string>
+    <string name="science">science</string>
+    <string name="health">health</string>
+    <string name="general">general</string>
+    <string name="entertainment">entertainment</string>
+    <string name="business">business</string>
+</resources>
