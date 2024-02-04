@@ -8,4 +8,5 @@
     <string name="general">general</string>
     <string name="entertainment">entertainment</string>
     <string name="business">business</string>
+    <string name="specific_news">Specific News</string>
 </resources>

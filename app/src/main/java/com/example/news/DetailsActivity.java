@@ -1,11 +1,17 @@
 package com.example.news;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.news.Models.NewsHeadlines;
@@ -45,8 +51,24 @@ public class DetailsActivity extends AppCompatActivity {
         txt_content.setText(headlines.getContent());
         Picasso.get().load(headlines.getUrlToImage()).into(img_news);
 
-    }
+        img_news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri myUri = Uri.parse(headlines.getUrl());
+                //String loadUrl = headlines.getUrl();
+                //Intent intent = getIntent();
+                //String urlLoad = intent.getStringExtra(loadUrl);
+                /*webView = findViewById(R.id.web_view);
+                webView.setWebViewClient(new WebViewClient());
+                webView.loadUrl(urlLoad);*/
+                //Toast.makeText(DetailsActivity.this, urlLoad, Toast.LENGTH_SHORT).show();
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(DetailsActivity.this,myUri );
+            }
+        });
 
+    }
     private void setSupportActionBar(Toolbar toolbar2) {
         this.toolbar2 = toolbar2;
     }

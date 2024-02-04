@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, V
                 progressDialog.dismiss();
             }
         }
-
         @Override
         public void onError(String message) {
             Toast.makeText(MainActivity.this, "An Error Occurred!!", Toast.LENGTH_SHORT).show();
@@ -104,25 +103,15 @@ public class MainActivity extends AppCompatActivity implements SelectListener, V
 
     @Override
     public void OnNewsClicked(NewsHeadlines headlines) {
-        Uri myUri = Uri.parse(headlines.getUrl());
-         //String loadUrl = headlines.getUrl();
-        //Intent intent = getIntent();
-        //String urlLoad = intent.getStringExtra(loadUrl);
-        /*webView = findViewById(R.id.web_view);
-         webView.setWebViewClient(new WebViewClient());
-         webView.loadUrl(urlLoad);*/
-         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-         CustomTabsIntent customTabsIntent = builder.build();
-         customTabsIntent.launchUrl(this,myUri );
-         //startActivity(new Intent(MainActivity.this,DetailsActivity.class)
-        //    .putExtra("data", headlines));
+        startActivity(new Intent(MainActivity.this,DetailsActivity.class)
+        .putExtra("data", headlines));
     }
 
     @Override
     public void onClick(View v) {
         Button button = (Button) v;
         String category = button.getText().toString();
-        progressDialog.setTitle("Fetching news articles of"+category);
+        progressDialog.setTitle("Fetching news articles of "+category);
         progressDialog.show();
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener,category,null);
